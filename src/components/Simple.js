@@ -36,7 +36,7 @@ function Simple() {
 
 	return (
 		<div className="Grid-wrapper">
-			<zing-grid caption="Hello Futurama" data={data} />
+			<zing-grid caption="Hello Futurama" data={data} head-class="grid-header" />
 		</div>
 	)	
 }

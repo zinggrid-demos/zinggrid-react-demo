@@ -76,11 +76,21 @@
 .Grid-wrapper {
   margin-left: 2em;
   margin-right: 2em;
+  text-align: left;
 }
 
 .GridSidebar-wrapper {
   margin-left: 1em;
   margin-right: 1em;
+  text-align: left;
   display: flex;
   flex-direction: row;
+}
+
+.Sidebar-wrapper {
+  margin-left: 1em;
+}
+
+.grid-header {
+  font-weight: bold;
 }

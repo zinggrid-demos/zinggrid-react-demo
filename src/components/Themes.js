@@ -19,7 +19,7 @@ function ReadOnly() {
 
 	return (
 		<div className="Grid-wrapper">
-			<zing-grid ref={grid} caption="Hello World" theme={theme}>
+			<zing-grid ref={grid} caption="Hello World" theme={theme} head-class="grid-header">
 				<zg-colgroup>
 					<zg-column index="0" header="Column 1"></zg-column>
 					<zg-column index="1" header="Column 2"></zg-column>
