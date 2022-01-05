@@ -17,28 +17,15 @@ function TwoWay() {
 
 	const grid = useRef(null)
 
-	// Called when a table row is deleted
-	const dataDelete = (ev) => {
-		console.log('--- data:delete fired ---', ev)
-		setTextData(JSON.stringify(ev.target.data))
-	}
-
-	// Called when a table row is added
-	const dataInsert = (ev) => {
-		console.log('--- data:insert fired ---', ev)
-		setTextData(JSON.stringify(ev.target.data))
-	}
-
-	// Called when a cell or record is changed
+	// Called when the table data is changed
 	const dataChange = (ev) => {
-		console.log('--- data:change fired ---', ev)
 		setTextData(JSON.stringify(ev.target.data))
 	}
 
 	// Attach event listeners to grid
 	useEffect(() => {
-		grid.current.addEventListener('data:record:beforedelete', dataDelete)
-		grid.current.addEventListener('data:record:insert', dataInsert)
+		grid.current.addEventListener('data:record:delete', dataChange)
+		grid.current.addEventListener('data:record:insert', dataChange)
 		grid.current.addEventListener('data:cell:change', dataChange)
 		grid.current.addEventListener('data:record:change', dataChange)
 	})
@@ -61,8 +48,8 @@ function TwoWay() {
 				data={JSON.stringify(tableData)} />
       <div className="Sidebar-wrapper">
 				<p>JSON data</p>
-				<textarea name="ds" cols="50" rows="22" value={textData} 
-				  onChange={ev => setTableData(JSON.parse(ev.target.value))} />
+				<textarea name="ds" cols="50" rows="22" value={textData}
+				  onChange={ev => { setTableData(JSON.parse(ev.target.value)); setTextData(ev.target.value) } } />
 			</div>
 		</div>
   )

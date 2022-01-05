@@ -60,15 +60,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>zinggrid-react Demo</h2>
+        <h2>ZingGrid React Demo</h2>
         <div className="App-buttonbar">
           <NavLink to="/" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Hello World</NavLink>
           <NavLink to="/themes" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Themes</NavLink>
           <NavLink to="/oneway" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>One-Way Binding</NavLink>
           <NavLink to="/twoway" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Two-Way Binding</NavLink>
+          <NavLink to="/ajax" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Ajax</NavLink>
           <NavLink to="/conditional" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Conditional Rendering</NavLink>
           <NavLink to="/register" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Register Method</NavLink>
-          <NavLink to="/ajax" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Ajax</NavLink>
           <NavLink to="/methods" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Methods</NavLink>
           <NavLink to="/events" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Events</NavLink>
         </div>
@@ -77,9 +77,9 @@ function App() {
           <Route path="/themes" element={<h4>{modules['/themes'].text}</h4>} />
           <Route path="/oneway" element={<h4>{modules['/oneway'].text}</h4>} />
           <Route path="/twoway" element={<h4>{modules['/twoway'].text}</h4>} />
+          <Route path="/ajax" element={<h4>{modules['/ajax'].text}</h4>} />
           <Route path="/conditional" element={<h4>{modules['/conditional'].text}</h4>} />
           <Route path="/register" element={<h4>{modules['/register'].text}</h4>} />
-          <Route path="/ajax" element={<h4>{modules['/ajax'].text}</h4>} />
           <Route path="/methods" element={<h4>{modules['/methods'].text}</h4>} />
           <Route path="/events" element={<h4>{modules['/events'].text}</h4>} />
         </Routes>
