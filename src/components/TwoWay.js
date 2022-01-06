@@ -1,8 +1,8 @@
 /*
  * Demonstrates two-way binding between a text box and a ZingGrid.
  */
-import React, {useState, useRef, useEffect} from 'react';
-import 'zinggrid';
+import React, {useState, useRef, useEffect} from 'react'
+import 'zinggrid'
 
 function TwoWay() {
 	const [tableData, setTableData] = useState([
@@ -55,4 +55,4 @@ function TwoWay() {
   )
 }
 
-export default TwoWay;
+export default TwoWay

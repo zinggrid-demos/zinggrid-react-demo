@@ -1,10 +1,10 @@
 /*
- * Ajax demo
+ * Demo of fetching data
  */
 import React, {useState, useEffect} from 'react'
 import 'zinggrid'
 
-function Ajax() {
+function Fetch() {
 	const [dataSet, setDataSet] = useState(undefined)
 
 	// Delay for ms milliseconds
@@ -39,4 +39,4 @@ function Ajax() {
 	)
 }
 
-export default Ajax
+export default Fetch

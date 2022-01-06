@@ -32,9 +32,8 @@ function Conditional() {
 			<p>
 				You can dynamically render <code>zg-column</code>s in your code and
 				ZingGrid will automatically pick up the mutation and adjust the layout
-				of columns being displayed. This is good for adjusting a single grid
-				with multiple datasets. If you have a new dataset, you will want new
-				columns. 
+				of columns being displayed. This is good for displaying a single grid
+				showing multiple datasets.
 			</p>
 			<button onClick={() => setDefaultColumns(!defaultColumns)}>
 				Switch to

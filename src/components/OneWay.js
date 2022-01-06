@@ -1,8 +1,8 @@
 /*
  * Demonstrates one-way binding between a text box and a ZingGrid.
  */
-import React, {useState} from 'react';
-import 'zinggrid';
+import React, {useState} from 'react'
+import 'zinggrid'
 
 function OneWay() {
 	const dataSet = [
@@ -44,7 +44,7 @@ function OneWay() {
 				page-size="5"
 				page-size-options="2,5,15,25,50" />
       <div className="Sidebar-wrapper">
-				<p>Paste your JSON data here</p>
+				<p>Paste your JSON data here:</p>
 				<textarea name="ds" cols="50" rows="12" value={stringData} 
 				  onChange={ev => setStringData(ev.target.value)} />
 				<br />

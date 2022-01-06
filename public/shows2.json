@@ -6,13 +6,15 @@
       },
       {
         "titleChanged": "Sex Education",
-        "genreChanged": "Sci-Fi, Psychological thriller"
+        "genreChanged": "Comedy"
       },
       {
         "titleChanged": "Rick and Morty",
         "genreChanged": "Animated sitcom, Sci-Fi"
       },
-      { "titleChanged": "Westworld", "genreChanged": "Sci-Fi, Drama" },
+      { 
+        "titleChanged": "Westworld", 
+        "genreChanged": "Sci-Fi, Drama" },
       {
         "titleChanged": "Robot Chicken",
         "genreChanged": "Sci-Fi, Supernatural"

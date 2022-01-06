@@ -1,19 +1,19 @@
 /*
  * Demostrates using a reference to set the data after the 
  * ZingGrid has been created and changing the grid's theme.
- * Note that in this case the data is an array (compare this
- * to Simple.js).
+ * Note that in this case we do not have to convert the
+ * data to JSON (contrast with Simple.js).
  */
-import React, {useState, useRef, useEffect} from 'react';
-import 'zinggrid';
+import React, {useState, useRef, useEffect} from 'react'
+import 'zinggrid'
 
-function ReadOnly() {
-	const grid = useRef(null);
-	const [theme, setTheme] = useState('default');
+function Themes() {
+	const grid = useRef(null)
+	const [theme, setTheme] = useState('default')
 	const data = [
 		[1,2,3],
 		[4,5,6]
-	];
+	]
 
 	useEffect(() => grid && grid.current.setData(data))
 
@@ -40,4 +40,4 @@ function ReadOnly() {
 	)
 }
 
-export default ReadOnly;
+export default Themes
