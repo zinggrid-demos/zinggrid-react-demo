@@ -2,58 +2,59 @@
  * Top-level component consisting of a set of buttons, one
  * for each demo, and the corresponding demo grid.
  */
-import './App.css';
-import React from 'react';
-import {Routes, Route, NavLink} from 'react-router-dom';
+import './App.css'
+import React from 'react'
+import {Routes, Route, NavLink} from 'react-router-dom'
 
-import './App.css';
-import Simple from './components/Simple.js';
-import Themes from './components/Themes.js';
-import OneWay from './components/OneWay.js';
-import TwoWay from './components/TwoWay.js';
-import Conditional from './components/Conditional.js';
-import Register from './components/Register.js';
-import Fetch from './components/Fetch.js';
-import Methods from './components/Methods.js';
-import Events from './components/Events.js';
+import './App.css'
+import Simple from './components/Simple.js'
+import Themes from './components/Themes.js'
+import OneWay from './components/OneWay.js'
+import TwoWay from './components/TwoWay.js'
+import Conditional from './components/Conditional.js'
+import Register from './components/Register.js'
+import Fetch from './components/Fetch.js'
+import Methods from './components/Methods.js'
+import Events from './components/Events.js'
 
 function App() {
+    const github = 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/'
     const modules = {
       '/': {
         text: 'Demonstrates a simple read-only grid of static data',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Simple.js'
+        file: 'Simple.js'
       },
       '/themes': {
         text: 'Demonstrates a read-only grid of static data with a theme selector',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Themes.js'
+        file: 'Themes.js'
       },
       '/methods': {
         text: 'Demonstrates using a method call to set the data for a grid',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Methods.js'
+        file: 'Methods.js'
       },
       '/events': {
         text: 'Demonstrates grid events',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Events.js'
+        file: 'Events.js'
       },
       '/fetch': {
         text: 'Demonstrates fetching grid data from the server',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Fetch.js'
+        file: 'Fetch.js'
       },
       '/oneway': {
         text: 'Demonstrates data binding in one direction',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/OneWay.js'
+        file: 'OneWay.js'
       },
       '/twoway': {
         text: 'Demonstrates data binding in two directions',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/TwoWay.js'
+        file: 'TwoWay.js'
       },
       '/conditional': {
         text: 'Demonstrates conditional rendering',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Conditional.js'
+        file: 'Conditional.js'
       },
       '/register': {
         text: 'Demonstrates registering a custom rendering method (column 1)',
-        link: 'https://github.com/zinggrid-demos/zinggrid-react-demo/blob/main/src/components/Register.js'
+        file: 'Register.js'
       },
     }
 
@@ -73,26 +74,16 @@ function App() {
           <NavLink to="/register" className={({isActive}) => isActive ? "App-button-active" : "App-button-plain"}>Register Method</NavLink>
         </div>
         <Routes>
-          <Route exact path="/" element={<h4>{modules['/'].text}</h4>} />
-          <Route path="/themes" element={<h4>{modules['/themes'].text}</h4>} />
-          <Route path="/methods" element={<h4>{modules['/methods'].text}</h4>} />
-          <Route path="/oneway" element={<h4>{modules['/oneway'].text}</h4>} />
-          <Route path="/twoway" element={<h4>{modules['/twoway'].text}</h4>} />
-          <Route path="/fetch" element={<h4>{modules['/fetch'].text}</h4>} />
-          <Route path="/conditional" element={<h4>{modules['/conditional'].text}</h4>} />
-          <Route path="/register" element={<h4>{modules['/register'].text}</h4>} />
-          <Route path="/events" element={<h4>{modules['/events'].text}</h4>} />
+          {Object.entries(modules).map(([path, mod], index) => 
+            <Route exact path={path} element={<h4>{mod.text}</h4>} />
+          )}
         </Routes>
         <Routes>
-          <Route exact path="/" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/'].link} >View source on Github</a></div>} />
-          <Route path="/themes" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/themes'].link} >View source on Github</a></div>} />
-          <Route path="/methods" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/methods'].link} >View source on Github</a></div>} />
-          <Route path="/oneway" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/oneway'].link} >View source on Github</a></div>} />
-          <Route path="/twoway" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/twoway'].link} >View source on Github</a></div>} />
-          <Route path="/conditional" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/conditional'].link} >View source on Github</a></div>} />
-          <Route path="/register" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/register'].link} >View source on Github</a></div>} />
-          <Route path="/fetch" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/fetch'].link} >View source on Github</a></div>} />
-          <Route path="/events" element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={modules['/events'].link} >View source on Github</a></div>} />
+          {Object.entries(modules).map(([path, mod], index) => 
+            <Route exact path={path} 
+              element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={github + mod.file} >View {mod.file} on Github</a></div>} 
+              />
+          )}
         </Routes>
       </header>
       <Routes>
@@ -107,7 +98,7 @@ function App() {
         <Route path="/events" element={<Events />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
