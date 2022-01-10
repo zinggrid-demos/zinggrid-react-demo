@@ -75,12 +75,12 @@ function App() {
         </div>
         <Routes>
           {Object.entries(modules).map(([path, mod], index) => 
-            <Route exact path={path} element={<h4>{mod.text}</h4>} />
+            <Route exact path={path} key={index} element={<h4>{mod.text}</h4>} />
           )}
         </Routes>
         <Routes>
           {Object.entries(modules).map(([path, mod], index) => 
-            <Route exact path={path} 
+            <Route exact path={path} key={index}
               element={<div className="viewsrc"><a target="_blank" rel="noreferrer" href={github + mod.file} >View {mod.file} on Github</a></div>} 
               />
           )}

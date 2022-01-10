@@ -12,7 +12,7 @@ function Register() {
 		{ "first": "Felicity", "last": "Snow", "number": 789 }
 	]
 
-	// toggle theme attribute on grid
+	// Custom renderer to convert to uppercase
 	const customRenderer = (text) => text.toUpperCase()
 
 	// On mount, assign the data and register a custom renderer

@@ -1,11 +1,11 @@
 /*
  * Demo of fetching data
  */
-import React, {useState, useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import 'zinggrid'
 
 function Fetch() {
-	const [dataSet, setDataSet] = useState(undefined)
+	const grid = useRef(null)
 
 	// Delay for ms milliseconds
 	const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
@@ -17,7 +17,7 @@ function Fetch() {
 			const data = await res.json()
 			// purposely timeout so the loading screen displays longer
 			await delay(2000)
-			setDataSet(JSON.stringify(data.shows))
+			grid.current.setData(data.shows)
 		} catch(err) {
 			console.log(err)
 		}
@@ -28,7 +28,7 @@ function Fetch() {
 
 	return (
 		<div className="Grid-wrapper">
-			<zing-grid data={dataSet} 
+			<zing-grid ref={grid}
 				caption="Shows" 
 				editor
 				head-class="grid-header"
