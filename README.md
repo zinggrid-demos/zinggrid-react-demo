@@ -9,7 +9,7 @@ You'll need an environment with `node` and `npm` installed.
 After cloning this repository:
 
 ```
-cd zingchart-react-demo
+cd zinggrid-react-demo
 npm install
 npm start
 ```

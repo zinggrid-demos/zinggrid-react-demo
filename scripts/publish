@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+/*
+ * Create public/publish-info.json containing the version and date
+ */
+'use strict'
+
+const fs = require('fs')
+
+const json = fs.readFileSync('package.json')
+const obj = JSON.parse(json)
+
+const [major, minor, patch] = obj.version.split('.')
+const now = new Date()
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+const publish = {
+    version: `${major}.${minor}`,
+    date: `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}` 
+}
+
+fs.writeFileSync('public/publish-info.json', JSON.stringify(publish))

@@ -1,0 +1,6 @@
+#
+# Copy the source for the components from into the public folder so they're accessible from the app
+#
+
+mkdir -p public/code
+cp src/components/*.js public/code/
