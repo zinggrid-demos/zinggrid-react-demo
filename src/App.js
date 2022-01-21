@@ -9,6 +9,8 @@ import {Routes, Route, NavLink} from 'react-router-dom'
 import Conditional from './components/Conditional.js'
 import Events from './components/Events.js'
 import Fetch from './components/Fetch.js'
+import GraphQLRead from './components/GraphQL-read.js'
+import GraphQLCRUD from './components/GraphQL-crud.js'
 import Methods from './components/Methods.js'
 import OneWay from './components/OneWay.js'
 import Register from './components/Register.js'
@@ -60,10 +62,24 @@ function App() {
         code: ''
       },
       '/fetch': {
-        label: 'Data from server',
-        text: 'Demonstrates fetching grid data from the server',
+        label: 'Data from REST Server',
+        text: 'Demonstrates fetching grid data from a REST server',
         info: 'Here we fetch the data for the grid from the server, with a 2-second delay added to simulate a slow connection so we can see the "loading" indicator.',
         file: 'Fetch.js',
+        code: ''
+      },
+      '/graphql-read': {
+        label: 'Read Data from GraphQL Server',
+        text: 'Demonstrates fetching grid data from a GraphQL server',
+        info: "Using ZingGrid's built-in GraphQL support, we obtain the grid data from a public GraphQL endpoint.",
+        file: 'GraphQL-read.js',
+        code: ''
+      },
+      '/graphql-crud': {
+        label: 'GraphQL CRUD',
+        text: 'Demonstrates reading and writing grid data from a GraphQL server',
+        info: "This example demonstrates full GraphQL Create/Read/Update/Delete support by specifying all 5 queries/mutations.",
+        file: 'GraphQL-crud.js',
         code: ''
       },
       '/oneway': {
@@ -160,6 +176,8 @@ function App() {
             <Route path="/methods" element={<Methods />} />
             <Route path="/events" element={<Events />} />
             <Route path="/fetch" element={<Fetch />} />
+            <Route path="/graphql-read" element={<GraphQLRead />} />
+            <Route path="/graphql-crud" element={<GraphQLCRUD />} />
             <Route path="/oneway" element={<OneWay />} />
             <Route path="/twoway" element={<TwoWay />} />
             <Route path="/conditional" element={<Conditional />} />
