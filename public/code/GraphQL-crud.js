@@ -1,103 +1,93 @@
 /*
- * Demo of CRUD operations on GraphQL data. We define each of
- * the 5 functions ZingGrid requires to support CRUD and then
- * register them to make them available to this instance of
- * ZingGrid. Note that we can access other constants defined
- * in this scope (like `owner`)--we could use this to 
- * share values across multiple queries/mutations.
+ * Demo of CRUD operations on GraphQL data. We include the
+ * `id` field in the initial query but hide the column in
+ * the table using the `hidden` attribute and exclude it 
+ * from the create-record dialog with `editor="disabled"`.
+ * 
+ * Note that we can include fields from the current record
+ * of the table in the query templates using the `[[ ... ]]`
+ * syntax.
+ *
+ * If the demo server is not available at the URL below, you
+ * can run a local instance. See the `server` directory in this
+ * repo.
+ * 
+ * NOTE: the public server has not been set up yet, use a local
+ * server for now.
  */
-import React, {useEffect} from 'react'
-import ZingGrid from 'zinggrid'
+import React from 'react'
+import 'zinggrid'
 
 
 function GraphQLCRUD() {
+	const demoServer = 'http://maya:4000/graphql'
 
-	const owner = "jeanettephung"
-	const name = "API_Demo"
-	const repoId = "MDEwOlJlcG9zaXRvcnkxMzA3NTEzMDk="
-
-	const readBody = () => ({
+	const readBodyJSON = JSON.stringify({
 		query: `
 			query {
-				repository(owner:"${owner}", name:"${name}") {
-					issues(last:20 states:OPEN) {
-						edges {
-							node {
-								id
-								state
-								title
-								body
-							}
-						}
-					}
+				shows {
+					id
+					title
+					seasons
+					provider
+					genre
 				}
 			}`
 		})
 
-	const createBody = (record) => ({
+	const createBodyJSON = JSON.stringify({ 
 		query: `
 			mutation {
-				createIssue(input:{repositoryId:"${repoId}", title:"${record['title']}", body:"${record['body']}"}) {
-					issue {
-						id
-					}
+				createShow(title:"[[record.title]]", seasons:[[record.seasons]], provider:"[[record.provider]]", genre:"[[record.genre]]") {
+					id
 				}
 			}`
 		})
 
-	const updateRowBody = (record) => ({
+	const updateRowBodyJSON = JSON.stringify({
 		query: `
 			mutation {
-				updateIssue(input:{id:"${record.id}", title:"${record.title}", body:"${record.body}"}) {
-					issue {
-						id
-					}
+				updateShow(id:[[record.id]], title:"[[record.title]]", seasons:[[record.seasons]], provider:"[[record.provider]]", genre:"[[record.genre]]") {
+					id
 				}
 			}`
 		})
 
-	const updateCellBody = (record) => ({
+	const updateCellBodyJSON = JSON.stringify({
 		query: `
 			mutation {
-				updateIssue(input:{id:"${record.id}", title:"${record.title}", body:"${record.body}"}) {
-					issue {
-						id
-					}
+				updateShow(id:[[record.id]], title:"[[record.title]]", seasons:[[record.seasons]], provider:"[[record.provider]]", genre:"[[record.genre]]") {
+					id
 				}
 			}`
 		})
 
-	const deleteBody = (record) => ({
+	const deleteBodyJSON = JSON.stringify({
 		query: `
 			mutation {
-				updateIssue(input:{id:"${record.id}", state: CLOSED}) {
-					issue {
-						id
-					}
+				deleteShow(id: [[record.id]]) {
+					success
 				}
 			}`
 		})
-
-	useEffect(() => {
-		ZingGrid.registerMethod(readBody, 'readBody', this)
-		ZingGrid.registerMethod(createBody, 'createBody', this)
-		ZingGrid.registerMethod(updateRowBody, 'updateRowBody', this)
-		ZingGrid.registerMethod(updateCellBody, 'updateCellBody', this)
-		ZingGrid.registerMethod(deleteBody, 'deleteBody', this)
-	},[])
 
 	return (
 		<div className="Grid-wrapper">
-			<zing-grid context-menu caption="Github Issues Demo" editor-controls>
-				<zg-data src="https://api.github.com/graphql" adapter="graphql">
-					<zg-param name="recordPath" value="data.repository.issues.edges"></zg-param>
-					<zg-param name="nodePath" value="node"></zg-param>
-					<zg-param name="headers" value='{"Authorization": "token 7b864f62dd5c3ae9b7cc1438f13398cd65ff71a5"}'></zg-param>
-					<zg-param name="readBody" value="readBody"></zg-param>
-					<zg-param name="createBody" value="createBody"></zg-param>
-					<zg-param name="updateRowBody" value="updateRowBody"></zg-param>
-					<zg-param name="updateCellBody" value="updateCellBody"></zg-param>
-					<zg-param name="deleteBody" value="deleteBody"></zg-param>
+			<zing-grid context-menu caption="Github Issues Demo" head-class="grid-header" editor-controls>
+				<zg-colgroup>
+					<zg-column index="id" hidden editor="disabled"></zg-column>
+					<zg-column index="title" header="Series Title"></zg-column>
+					<zg-column index="seasons" header="# of Seasons"></zg-column>
+					<zg-column index="provider" header="Provider or Channel"></zg-column>
+					<zg-column index="genre" header="Genre"></zg-column>
+				</zg-colgroup>
+				<zg-data src={demoServer} adapter="graphql">
+					<zg-param name="recordPath" value="data.shows"></zg-param>
+					<zg-param name="readBody" value={readBodyJSON}></zg-param>
+					<zg-param name="createBody" value={createBodyJSON}></zg-param>
+					<zg-param name="updateRowBody" value={updateRowBodyJSON}></zg-param>
+					<zg-param name="updateCellBody" value={updateCellBodyJSON}></zg-param>
+					<zg-param name="deleteBody" value={deleteBodyJSON}></zg-param>
 				</zg-data>
 			</zing-grid>
 		</div>

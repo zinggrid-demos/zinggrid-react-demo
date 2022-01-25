@@ -1,0 +1,15 @@
+{
+  "name": "ZingGrid demo tuql server",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "tuql": "^1.7.0"
+  },
+  "scripts": {
+    "start": "tuql --db active.sqlite",
+    "reset": "cp reset.sqlite active.sqlite"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.2.0"
+  }
+}
