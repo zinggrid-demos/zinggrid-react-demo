@@ -45,7 +45,8 @@
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 [class*="App-button-"] {
