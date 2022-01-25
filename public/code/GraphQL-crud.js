@@ -20,7 +20,7 @@ import 'zinggrid'
 
 
 function GraphQLCRUD() {
-	const demoServer = 'http://maya:4000/graphql'
+	const demoServer = 'http://localhost:4000/graphql'
 
 	const readBodyJSON = JSON.stringify({
 		query: `
@@ -73,7 +73,7 @@ function GraphQLCRUD() {
 
 	return (
 		<div className="Grid-wrapper">
-			<zing-grid context-menu caption="Github Issues Demo" head-class="grid-header" editor-controls>
+			<zing-grid context-menu caption="GraphQL CRUD Demo" head-class="grid-header" editor-controls>
 				<zg-colgroup>
 					<zg-column index="id" hidden editor="disabled"></zg-column>
 					<zg-column index="title" header="Series Title"></zg-column>
