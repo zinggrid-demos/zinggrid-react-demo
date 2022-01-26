@@ -77,7 +77,7 @@ function GraphQLCRUD() {
 				<zg-colgroup>
 					<zg-column index="id" hidden editor="disabled"></zg-column>
 					<zg-column index="title" header="Series Title"></zg-column>
-					<zg-column index="seasons" header="# of Seasons"></zg-column>
+					<zg-column index="seasons" header="# of Seasons" type="number"></zg-column>
 					<zg-column index="provider" header="Provider or Channel"></zg-column>
 					<zg-column index="genre" header="Genre"></zg-column>
 				</zg-colgroup>
