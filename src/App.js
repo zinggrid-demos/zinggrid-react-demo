@@ -78,7 +78,7 @@ function App() {
       '/graphql-crud': {
         label: 'GraphQL CRUD',
         text: 'Demonstrates reading and writing grid data from a GraphQL server',
-        info: "This example demonstrates full GraphQL Create/Read/Update/Delete support by specifying all 5 queries/mutations. If you're not able to access the public server, see the `server` directory in this repo for instructions on running it locally.",
+        info: "This example demonstrates full GraphQL Create/Read/Update/Delete support by specifying all 5 queries/mutations. We access a public GraphQL server where the database is reset every hour on the hour.",
         file: 'GraphQL-crud.js',
         code: ''
       },

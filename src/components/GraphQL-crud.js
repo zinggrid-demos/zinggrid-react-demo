@@ -9,18 +9,16 @@
  * syntax.
  *
  * If the demo server is not available at the URL below, you
- * can run a local instance. See the `server` directory in this
- * repo.
- * 
- * NOTE: the public server has not been set up yet, use a local
- * server for now.
+ * can run a local instance. The code is available at:
+ *   https://github.com/zinggrid-demos/graphql-demo-server
  */
 import React from 'react'
 import 'zinggrid'
 
 
 function GraphQLCRUD() {
-	const demoServer = 'http://localhost:4000/graphql'
+	const demoServer = 'https://examples.zingsoft.com/graphql'
+	//const demoServer = 'http://localhost:4000/graphql'
 
 	const readBodyJSON = JSON.stringify({
 		query: `

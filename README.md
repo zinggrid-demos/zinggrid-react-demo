@@ -15,6 +15,13 @@ npm start
 ```
 
 You should then be able to view the demo in your browser at `localhost:3000`.
+
+## GraphQL server
+
+One of the GraphQL demos uses a server located at [https://examples.zingsoft.com/graphql](https://examples.zingsoft.com/graphql).
+If that server is not available, you can run an instance locally. The code is available at:
+[https://github.com/zinggrid-demos/graphql-demo-server](https://github.com/zinggrid-demos/graphql-demo-server)
+
 ## Starting a new project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) via this sequence of commands:
