@@ -11,14 +11,19 @@
  * If the demo server is not available at the URL below, you
  * can run a local instance. The code is available at:
  *   https://github.com/zinggrid-demos/graphql-demo-server
+ *
+ * Since the data is on a public server and could be vulnerable 
+ * to XSS attacks, we use a custom render to filter each of the
+ * text columns.
  */
-import React from 'react'
-import 'zinggrid'
+import React, {useEffect} from 'react'
+import {filterXSS} from 'xss'
+import ZingGrid from 'zinggrid'
 
 
 function GraphQLCRUD() {
 	const demoServer = 'https://examples.zingsoft.com/graphql'
-	//const demoServer = 'http://localhost:4000/graphql'
+	//const demoServer = 'http://maya:4000/graphql'
 
 	const readBodyJSON = JSON.stringify({
 		query: `
@@ -69,15 +74,17 @@ function GraphQLCRUD() {
 			}`
 		})
 
+	useEffect(() => ZingGrid.registerMethod(filterXSS, 'xss'))
+
 	return (
 		<div className="Grid-wrapper">
 			<zing-grid context-menu caption="GraphQL CRUD Demo" head-class="grid-header" editor-controls>
 				<zg-colgroup>
 					<zg-column index="id" hidden editor="disabled"></zg-column>
-					<zg-column index="title" header="Series Title"></zg-column>
+					<zg-column index="title" header="Series Title" renderer="xss"></zg-column>
 					<zg-column index="seasons" header="# of Seasons" type="number"></zg-column>
-					<zg-column index="provider" header="Provider or Channel"></zg-column>
-					<zg-column index="genre" header="Genre"></zg-column>
+					<zg-column index="provider" header="Provider or Channel" renderer="xss"></zg-column>
+					<zg-column index="genre" header="Genre" renderer="xss"></zg-column>
 				</zg-colgroup>
 				<zg-data src={demoServer} adapter="graphql">
 					<zg-param name="recordPath" value="data.shows"></zg-param>
