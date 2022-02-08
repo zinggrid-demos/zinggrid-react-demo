@@ -23,7 +23,7 @@ import ZingGrid from 'zinggrid'
 
 function GraphQLCRUD() {
 	const demoServer = 'https://examples.zingsoft.com/graphql'
-	//const demoServer = 'http://maya:4000/graphql'
+	//const demoServer = 'http://localhost:4000/graphql'
 
 	const readBodyJSON = JSON.stringify({
 		query: `
