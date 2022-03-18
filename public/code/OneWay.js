@@ -46,7 +46,7 @@ function OneWay() {
       <div className="Sidebar-wrapper">
 				<p>Paste your JSON data here:</p>
 				<textarea name="ds" cols="50" rows="12" value={stringData} spellCheck="false"
-				  onChange={ev => setStringData(ev.target.value)} />
+					onChange={ev => setStringData(ev.target.value)} />
 				<br />
 				
 				<label htmlFor="pager-toggle">Toggle Pager</label>
