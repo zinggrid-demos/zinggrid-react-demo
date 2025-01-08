@@ -10,21 +10,22 @@ function Fetch() {
 	// Delay for ms milliseconds
 	const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-	// Fetch the dataset
-	async function getData() {
-		try {
-			const res = await fetch('./shows.json')
-			const data = await res.json()
-			// purposely timeout so the loading screen displays longer
-			await delay(2000)
-			grid.current.setData(data.shows)
-		} catch(err) {
-			console.log(err)
+	// Fetch the dataset on mount
+	useEffect(() => {
+		async function getData() {
+			try {
+				const res = await fetch('./shows.json')
+				const data = await res.json()
+				// purposely timeout so the loading screen displays longer
+				await delay(2000)
+				grid.current.setData(data.shows)
+			} catch(err) {
+				console.log(err)
+			}
 		}
-	}
 
-	// Call getData() on mount
-	useEffect(() => getData())
+		getData();
+	});
 
 	return (
 		<div className="Grid-wrapper">
