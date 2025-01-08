@@ -9,23 +9,24 @@ function Conditional() {
 	const [data2, setData2] = useState(undefined)
 	const [defaultColumns, setDefaultColumns] = useState(true)
 
-	// Fetch each of the datasets
-	async function getData() {
-		try {
-			const res1 = await fetch('./shows.json')
-			const data1 = await res1.json()
-			setData1(JSON.stringify(data1.shows))
-
-			const res2 = await fetch('./shows2.json')
-			const data2 = await res2.json()
-			setData2(JSON.stringify(data2.shows))
-		} catch(err) {
-			console.log(err)
+	// fetch datasets on mount
+	useEffect(() => {
+		async function getData() {
+			try {
+				const res1 = await fetch('./shows.json')
+				const data1 = await res1.json()
+				setData1(JSON.stringify(data1.shows))
+	
+				const res2 = await fetch('./shows2.json')
+				const data2 = await res2.json()
+				setData2(JSON.stringify(data2.shows))
+			} catch(err) {
+				console.log(err)
+			}
 		}
-	}
 
-	// Call getData() on mount
-	useEffect(() => getData())
+		getData();
+	})
 
 	return (
 		<div className="Grid-wrapper">
